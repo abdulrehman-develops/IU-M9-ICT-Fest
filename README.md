@@ -98,8 +98,7 @@ If you'd like to contribute, create an issue or send a PR after the initial push
 
 ## License
 
-This project is intended to be open source for the semester. Add a `LICENSE` file (for example MIT) before publishing to GitHub.
-
+This project is intended to be open source for the semester. No Need `LICENSE` file.
 ---
 
 Developed with ♥ by Abdul Rehman and team — IU-M9 ICT Fest
