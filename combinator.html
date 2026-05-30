@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Combinator | Virasat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="combinator">
+
+  <!-- ==========================================
+       1. NAVIGATION BAR
+       ========================================== -->
+  <header class="navbar" id="home">
+    <div class="container">
+      <a href="index.html" class="logo-area">
+        <span class="logo-symbol">🏺</span>
+        <span class="logo-text">Virasat<span class="logo-tag">.</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-trigger">Products ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="punjabi.html">Punjabi Wear</a></li>
+              <li><a href="pathan.html">Pathan Wear</a></li>
+              <li><a href="balochi.html">Balochi Wear</a></li>
+              <li><a href="sindhi.html">Sindhi Wear</a></li>
+            </ul>
+          </li>
+          <li><a href="combinator.html" class="active">Style Combinator</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-controls">
+        <button id="theme-toggle-btn" class="icon-btn" title="Toggle Theme" aria-label="Toggle light or dark theme">🌙</button>
+        <button id="cart-btn" class="icon-btn" title="Open Shopping Cart" aria-label="Open shopping cart">
+          🛒
+          <span id="cart-badge" class="cart-count" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         2. REGIONAL HEADER BANNER
+         ========================================== -->
+    <section class="page-header page-header-combinator">
+      <div class="container">
+        <h1 class="page-header-title">Style Combinator</h1>
+        <p class="page-header-subtitle">
+          Celebrate unity in diversity. Select and pair distinct regional headwear, upper garments, 
+          and footwear to compose a personalized cultural ensemble.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. INTERACTIVE COMBINATOR SECTION
+         ========================================== -->
+    <section class="container">
+      <div class="combinator-section">
+        <div class="combinator-grid">
+          
+          <!-- Left: User Configuration Controls -->
+          <div class="combinator-controls">
+            <h3>Outfit <span>Customizer</span></h3>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+              Mix and match elements from various cultures. Pick a turban, select a matching long kurta or tunban, 
+              and pair it with hand-stitched Peshawari sandals or embroidered juttis.
+            </p>
+
+            <!-- Dropdowns -->
+            <div class="select-group">
+              <label for="comb-head">Headwear / Turban</label>
+              <select id="comb-head" class="combinator-select">
+                <!-- Populated dynamically by app.js -->
+              </select>
+            </div>
+
+            <div class="select-group">
+              <label for="comb-torso">Upper Attire / Kurta</label>
+              <select id="comb-torso" class="combinator-select">
+                <!-- Populated dynamically by app.js -->
+              </select>
+            </div>
+
+            <div class="select-group">
+              <label for="comb-footwear">Footwear / Jutti / Sandals</label>
+              <select id="comb-footwear" class="combinator-select">
+                <!-- Populated dynamically by app.js -->
+              </select>
+            </div>
+
+            <!-- Price and Add all -->
+            <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">
+                <span>Total Set Price:</span>
+                <span id="comb-total-price" style="color: var(--primary-color);">Rs. 0</span>
+              </div>
+              <button id="comb-add-all-btn" class="btn btn-primary" style="width: 100%; justify-content: center;" disabled>
+                Add Combined Outfit to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Visual Combinator Preview -->
+          <div class="combinator-preview-box">
+            
+            <!-- Default placeholder when nothing is selected -->
+            <div id="combinator-placeholder">
+              <span style="font-size: 4rem;">🥋</span>
+              <p style="margin-top: 1rem; color: var(--text-muted);">
+                Select components on the left to dress the traditional preview model.
+              </p>
+            </div>
+
+            <!-- Preview cards -->
+            <div class="mannequin-frame">
+              <div id="prev-head" class="preview-slot" style="display: none;"></div>
+              <div id="prev-torso" class="preview-slot" style="display: none;"></div>
+              <div id="prev-footwear" class="preview-slot" style="display: none;"></div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       4. SLIDE-OUT CART PANEL (SHARED)
+       ========================================== -->
+  <aside id="cart-panel" class="cart-panel">
+    <div class="cart-header">
+      <h3>Your Bag</h3>
+      <button id="cart-close" class="cart-close-btn" aria-label="Close cart panel">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items">
+      <!-- Injected by app.js -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal:</span>
+        <span id="cart-total">Rs. 0</span>
+      </div>
+      <button id="checkout-btn" class="btn btn-primary" style="width: 100%; justify-content: center;">
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+
+  <!-- ==========================================
+       5. PRODUCT DETAILS MODAL (SHARED)
+       ========================================== -->
+  <div id="product-modal" class="modal">
+    <button id="modal-close-btn" class="modal-close" aria-label="Close product modal">✕</button>
+    <div class="modal-image-area">
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-content-area">
+      <span id="modal-culture-badge" class="modal-culture"></span>
+      <h3 id="modal-title" class="modal-title"></h3>
+      <span id="modal-price" class="modal-price"></span>
+      <p id="modal-desc" class="modal-desc"></p>
+      <div class="cultural-story-box">
+        <div class="story-header">Heritage Significance</div>
+        <p id="modal-story" class="story-body"></p>
+      </div>
+      <div>
+        <div class="modal-option-title">Select Size</div>
+        <div class="size-chips">
+          <button class="size-chip" data-size="S">S</button>
+          <button class="size-chip" data-size="M">M</button>
+          <button class="size-chip active" data-size="L">L</button>
+          <button class="size-chip" data-size="XL">XL</button>
+        </div>
+      </div>
+      <button id="modal-add-btn" class="btn btn-primary" style="width: 100%; justify-content: center;">
+        Add to Shopping Bag
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       6. CHECKOUT SUCCESS POPUP (SHARED)
+       ========================================== -->
+  <div id="checkout-modal" class="checkout-modal">
+    <div class="success-icon">✓</div>
+    <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1rem;">Order Placed!</h3>
+    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+      Thank you for purchasing traditional wear from Virasat. Your support helps local handloom and embroidery craftsmen preserve their ancient trades.
+    </p>
+    <button id="checkout-close-btn" class="btn btn-primary" style="width: 100%; justify-content: center;">
+      Continue Shopping
+    </button>
+  </div>
+
+  <!-- ==========================================
+       7. FOOTER SECTION
+       ========================================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>Virasat.</h3>
+        <p>Promoting and celebrating the rich diversity of Pakistan's traditional cultural attire since 2026.</p>
+        <div class="footer-socials">
+          <span style="font-size: 1.5rem; cursor: pointer;" title="Facebook">📘</span>
+          <span style="font-size: 1.5rem; cursor: pointer;" title="Instagram">📸</span>
+          <span style="font-size: 1.5rem; cursor: pointer;" title="Twitter">🐦</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="punjabi.html">Punjabi Wear</a></li>
+          <li><a href="pathan.html">Pathan Wear</a></li>
+          <li><a href="balochi.html">Balochi Wear</a></li>
+          <li><a href="sindhi.html">Sindhi Wear</a></li>
+          <li><a href="combinator.html">Style Combinator</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Heritage Regions</h4>
+        <ul>
+          <li><a href="punjabi.html">Punjab</a></li>
+          <li><a href="pathan.html">Khyber Pakhtunkhwa</a></li>
+          <li><a href="balochi.html">Balochistan</a></li>
+          <li><a href="sindhi.html">Sindh</a></li>
+        </ul>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Heritage Club</h4>
+        <p>Subscribe to receive historical stories about traditional attire design and special discounts.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed to Virasat newsletter!'); this.reset();">
+          <input type="email" placeholder="Your Email Address" class="newsletter-input" required>
+          <button type="submit" class="newsletter-btn" title="Subscribe">➜</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Virasat. Developed with ♥ for the IU-M9 ICT Fest.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
