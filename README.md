@@ -34,7 +34,7 @@ This repository contains the 1st-semester ICT project assigned by our university
 ## Authors
 
 - Abdul Rehman (lead)
-- Team members: (add team names here)
+- Team members: Rayyan Ather (Contributor)
 # IU-M9 ICT Fest — Cultural E‑commerce Project
 
 [![Project Status](https://img.shields.io/badge/status-wip-yellow.svg)](https://example.com)
